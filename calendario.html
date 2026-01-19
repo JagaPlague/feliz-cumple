@@ -2,213 +2,212 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Nuestro Calendario 💖</title>
+<title>Nuestro Calendario 💕</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #ff9acb, #ffc1dc);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
+body{
+  background: linear-gradient(180deg,#ffb6c1,#ff69b4);
+  font-family:'Comic Sans MS', cursive;
+  color:white;
+  margin:0;
+  padding:20px;
+  text-align:center;
+  overflow-x:hidden;
 }
 
-/* ENCABEZADO */
-header {
-  padding: 25px 15px;
+/* ===== MENÚ ===== */
+.menu-btn{
+  position:fixed;
+  top:15px;
+  left:15px;
+  font-size:30px;
+  cursor:pointer;
+  z-index:1001;
 }
 
-h1 {
-  font-size: 34px;
+.menu{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:250px;
+  height:100%;
+  background:rgba(255,105,180,0.95);
+  padding-top:60px;
+  transition:0.3s;
+  z-index:1000;
+}
+.menu a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  padding:15px;
+}
+.menu a:hover{
+  background:rgba(255,255,255,0.2);
 }
 
-/* SELECTORES */
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+/* ===== CALENDARIO ===== */
+h1{
+  font-size:2.5em;
+  animation:latido 1s infinite;
+}
+@keyframes latido{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
 }
 
-select {
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
+select{
+  padding:10px;
+  border-radius:15px;
+  border:none;
+  margin:10px;
 }
 
-/* CALENDARIO */
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+.calendario{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:10px;
+  margin-top:20px;
 }
 
-.day {
-  background: rgba(255,255,255,0.22);
-  border-radius: 15px;
-  padding: 10px;
-  min-height: 90px;
-  position: relative;
-  font-size: 14px;
+.dia{
+  background:rgba(255,255,255,0.25);
+  padding:15px;
+  border-radius:15px;
 }
 
-.day small {
-  display: block;
-  margin-top: 5px;
-  font-size: 12px;
+.mensaje{
+  position:fixed;
+  bottom:20%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.3);
+  padding:10px 20px;
+  border-radius:20px;
+  font-size:14px;
+  opacity:0;
+  transition:0.4s;
 }
 
-/* CORAZONES */
-.heart {
-  position: absolute;
-  bottom: 6px;
-  right: 8px;
-  font-size: 18px;
+/* ===== CORAZONES ===== */
+.corazon{
+  position:fixed;
+  top:-10px;
+  font-size:25px;
+  animation:caer 5s linear infinite;
 }
-
-/* MENSAJES FLOTANTES */
-.message {
-  position: fixed;
-  font-size: 20px;
-  opacity: 0.35;
-  pointer-events: none;
-  animation: float 4s ease-in-out forwards;
-}
-
-@keyframes float {
-  0% {opacity:0; transform:translateY(20px);}
-  20% {opacity:0.35;}
-  80% {opacity:0.35;}
-  100% {opacity:0; transform:translateY(-30px);}
+@keyframes caer{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>📅 Nuestro Calendario 💕</h1>
-  <p>Momentos, citas y recuerdos solo nuestros</p>
+<!-- MENÚ -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu" id="menu">
+  <a href="index.html">💖 Inicio</a>
+  <a href="rutina.html">🏋️ Rutina</a>
+  <a href="calendario.html">📅 Calendario</a>
+</div>
 
-  <div class="controls">
-    <select id="monthSelect" onchange="generateCalendar()">
-      <option value="0">Enero</option>
-      <option value="1">Febrero</option>
-      <option value="2">Marzo</option>
-      <option value="3">Abril</option>
-      <option value="4">Mayo</option>
-      <option value="5">Junio</option>
-      <option value="6">Julio</option>
-      <option value="7">Agosto</option>
-      <option value="8">Septiembre</option>
-      <option value="9">Octubre</option>
-      <option value="10">Noviembre</option>
-      <option value="11">Diciembre</option>
-    </select>
+<h1>Nuestro Calendario 💕</h1>
+<p>Para agendar momentos contigo, no días 🥺</p>
 
-    <select id="yearSelect" onchange="generateCalendar()">
-      <option value="2025">2025</option>
-      <option value="2026" selected>2026</option>
-      <option value="2027">2027</option>
-    </select>
-  </div>
-</header>
+<select id="mes"></select>
+<select id="anio"></select>
 
-<div class="calendar" id="calendar"></div>
+<div class="calendario" id="calendario"></div>
 
-<!--
-==============================
- ZONA SECRETA PARA VOS 💘
-==============================
-
-👉 PARA AGENDAR CITAS:
-Buscá la variable "events" abajo.
-
-FORMATO:
-"YYYY-MM-DD": "Texto del evento 💕"
-
-Ejemplo:
-"2026-01-23": "Cita del sábado 💖✨"
-
-Agregá las que quieras, ella no ve esto.
-==============================
--->
+<div class="mensaje" id="mensaje"></div>
 
 <script>
-const calendar = document.getElementById("calendar");
+/* ===== MENÚ ===== */
+function toggleMenu(){
+  const m=document.getElementById("menu");
+  m.style.left=m.style.left==="0px"?"-260px":"0px";
+}
 
-/* EVENTOS */
-const events = {
-  "2026-01-23": "Cita del sábado 💕✨"
+/* ===== CALENDARIO ===== */
+const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const mesSel=document.getElementById("mes");
+const anioSel=document.getElementById("anio");
+const cal=document.getElementById("calendario");
+
+meses.forEach((m,i)=>{
+  const o=document.createElement("option");
+  o.value=i;
+  o.textContent=m;
+  mesSel.appendChild(o);
+});
+
+for(let y=2024;y<=2030;y++){
+  const o=document.createElement("option");
+  o.value=y;
+  o.textContent=y;
+  anioSel.appendChild(o);
+}
+
+mesSel.value=new Date().getMonth();
+anioSel.value=new Date().getFullYear();
+
+const eventos={
+  "2025-01-17":"❤️",
+  "2025-03-20":"💙",
+  "2026-01-23":"💖 Cita del sábado"
 };
 
-/* CORAZONES FIJOS */
-const hearts = {
-  "03-20": "💙",
-  "01-17": "❤️"
-};
+function render(){
+  cal.innerHTML="";
+  const m=parseInt(mesSel.value);
+  const y=parseInt(anioSel.value);
+  const dias=new Date(y,m+1,0).getDate();
 
-function generateCalendar() {
-  calendar.innerHTML = "";
-
-  const year = document.getElementById("yearSelect").value;
-  const month = document.getElementById("monthSelect").value;
-
-  const daysInMonth = new Date(year, Number(month) + 1, 0).getDate();
-
-  for (let day = 1; day <= daysInMonth; day++) {
-    const box = document.createElement("div");
-    box.className = "day";
-
-    const dateKey = `${year}-${String(Number(month)+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
-    const heartKey = `${String(Number(month)+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
-
-    box.innerHTML = `<strong>${day}</strong>`;
-
-    if (events[dateKey]) {
-      box.innerHTML += `<small>${events[dateKey]}</small>`;
-    }
-
-    if (hearts[heartKey]) {
-      box.innerHTML += `<div class="heart">${hearts[heartKey]}</div>`;
-    }
-
-    calendar.appendChild(box);
+  for(let d=1;d<=dias;d++){
+    const div=document.createElement("div");
+    div.className="dia";
+    const key=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    div.innerHTML=`${d}<br>${eventos[key]||""}`;
+    cal.appendChild(div);
   }
 }
 
-generateCalendar();
+mesSel.onchange=anioSel.onchange=render;
+render();
 
-/* MENSAJES BONITOS */
-const messages = [
-  "Te amo 💖",
-  "Siempre vos 💘",
-  "Nuestro amor ✨",
-  "Cada cita contigo 💕",
-  "Mi lugar seguro 🤍",
-  "Gracias por existir 💫",
-  "Elegirte siempre 🌸",
-  "Vos y yo 🫶",
-  "Mi persona favorita 💞",
-  "Para toda la vida 💍"
+/* ===== CORAZONES ===== */
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="corazon";
+  c.innerHTML="💖";
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=(Math.random()*3+2)+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5000);
+},300);
+
+/* ===== MENSAJES ===== */
+const mensajes=[
+  "Cada día contigo cuenta 💕",
+  "Aquí guardamos nuestros recuerdos 🥺",
+  "Siempre te elegiría 💖",
+  "Nuestro tiempo juntos es mi favorito"
 ];
-
-setInterval(() => {
-  const msg = document.createElement("div");
-  msg.className = "message";
-  msg.textContent = messages[Math.floor(Math.random()*messages.length)];
-  msg.style.left = Math.random()*85 + "%";
-  msg.style.top = Math.random()*85 + "%";
-  document.body.appendChild(msg);
-
-  setTimeout(() => msg.remove(), 4000);
-}, 2000);
+const msg=document.getElementById("mensaje");
+setInterval(()=>{
+  msg.textContent=mensajes[Math.floor(Math.random()*mensajes.length)];
+  msg.style.opacity=1;
+  setTimeout(()=>msg.style.opacity=0,2000);
+},3500);
 </script>
 
 </body>
 </html>
+
+
