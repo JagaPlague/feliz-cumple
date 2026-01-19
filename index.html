@@ -7,12 +7,29 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   height: 100vh;
   background: linear-gradient(180deg, #ff9acb, #ffc1dc);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   overflow-x: hidden;
+}
+
+/* CONTENIDO PRINCIPAL ORIGINAL */
+.container {
+  padding: 40px;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 20px;
 }
 
 /* BOTÓN MENÚ */
@@ -23,14 +40,15 @@ body {
   font-size: 30px;
   cursor: pointer;
   z-index: 1001;
+  color: white;
 }
 
 /* MENÚ LATERAL */
 #side-menu {
   position: fixed;
   top: 0;
-  left: -260px;
-  width: 260px;
+  left: -250px;
+  width: 250px;
   height: 100%;
   background: rgba(255, 105, 180, 0.95);
   padding: 40px 20px;
@@ -39,6 +57,7 @@ body {
 }
 
 #side-menu h2 {
+  color: white;
   margin-bottom: 30px;
 }
 
@@ -48,45 +67,6 @@ body {
   text-decoration: none;
   font-size: 20px;
   margin: 15px 0;
-}
-
-/* CONTENIDO PRINCIPAL ORIGINAL */
-.container {
-  padding: 80px 20px;
-}
-
-h1 {
-  font-size: 44px;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: 20px;
-  margin-bottom: 40px;
-}
-
-.love-message {
-  font-size: 18px;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-/* BOTÓN ORIGINAL */
-.main-button {
-  margin-top: 40px;
-  background: white;
-  color: #ff4f9a;
-  padding: 15px 35px;
-  border-radius: 30px;
-  font-size: 20px;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-
-.main-button:hover {
-  transform: scale(1.05);
 }
 </style>
 </head>
@@ -103,35 +83,22 @@ h1 {
   <a href="calendario.html">📅 Calendario</a>
 </div>
 
-<!-- HOME ORIGINAL -->
+<!-- CONTENIDO ORIGINAL -->
 <div class="container">
   <h1>Feliz Cumple 💖</h1>
-
-  <div class="subtitle">
-    Este es uno de tus regalos  
-    <br>pero todavía faltan más 👀✨
-  </div>
-
-  <div class="love-message">
-    Lo hice pensando en vos,  
-    <br>en cada sonrisa tuya  
-    <br>y en todo lo que compartimos juntos 💕
-  </div>
-
-  <a href="#" class="main-button">
-    💝 Abrí tu regalo
-  </a>
+  <p>Esto lo hice con todo mi amor para vos</p>
 </div>
 
 <script>
 function toggleMenu() {
   const menu = document.getElementById("side-menu");
-  menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
+  menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
 }
 </script>
 
 </body>
 </html>
+
 
 
 
