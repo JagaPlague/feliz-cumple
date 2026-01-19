@@ -1,238 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Rutina 💙</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Rutina de mi amor 💪💖</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      overflow-x: hidden;
-      text-align: center;
-    }
+<style>
+body{
+  background: linear-gradient(180deg,#ffb6c1,#ff69b4);
+  font-family:'Comic Sans MS', cursive;
+  color:white;
+  margin:0;
+  padding:20px;
+  overflow-x:hidden;
+  text-align:center;
+}
 
-    /* ===== MENU ===== */
-    .menu-btn {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      font-size: 26px;
-      cursor: pointer;
-      z-index: 1001;
-    }
+/* ===== MENÚ ===== */
+.menu-btn{
+  position:fixed;
+  top:15px;
+  left:15px;
+  font-size:30px;
+  cursor:pointer;
+  z-index:1001;
+}
 
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 260px;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      padding-top: 60px;
-      transition: 0.3s;
-      z-index: 1000;
-      text-align: left;
-    }
+.menu{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:250px;
+  height:100%;
+  background:rgba(255,105,180,0.95);
+  padding-top:60px;
+  transition:0.3s;
+  z-index:1000;
+}
+.menu a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  padding:15px;
+}
+.menu a:hover{
+  background:rgba(255,255,255,0.2);
+}
 
-    .side-menu .section {
-      padding: 10px 20px;
-      font-size: 13px;
-      opacity: 0.7;
-      text-transform: uppercase;
-    }
+/* ===== CONTENIDO ===== */
+h1{
+  font-size:2.6em;
+  animation:latido 1s infinite;
+}
+@keyframes latido{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(1)}
+}
 
-    .side-menu a {
-      display: block;
-      padding: 14px 20px;
-      color: white;
-      text-decoration: none;
-      font-size: 17px;
-    }
+.selector{
+  margin:20px;
+}
+select{
+  padding:10px;
+  border-radius:15px;
+  border:none;
+  font-size:16px;
+}
 
-    .side-menu a:hover {
-      background: rgba(255,255,255,0.1);
-    }
+.semana{
+  display:none;
+  background:rgba(255,255,255,0.2);
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
+}
 
-    /* ===== CONTENIDO ===== */
-    .container {
-      padding: 80px 15px 40px;
-      max-width: 900px;
-      margin: auto;
-    }
+.ejercicio{
+  background:rgba(255,255,255,0.25);
+  padding:15px;
+  border-radius:15px;
+  margin:10px 0;
+}
 
-    h1 {
-      margin-bottom: 10px;
-    }
+input{
+  width:60px;
+  border:none;
+  border-radius:10px;
+  padding:5px;
+  text-align:center;
+}
 
-    .note {
-      font-size: 14px;
-      opacity: 0.85;
-      margin-bottom: 25px;
-    }
+button{
+  background:red;
+  border:none;
+  padding:12px 20px;
+  border-radius:25px;
+  color:white;
+  font-size:16px;
+  margin-top:15px;
+  cursor:pointer;
+  box-shadow:0 0 10px pink;
+}
 
-    .day {
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 25px;
-      text-align: left;
-    }
+/* ===== CORAZONES ===== */
+.corazon{
+  position:fixed;
+  top:-10px;
+  font-size:25px;
+  animation:caer 5s linear infinite;
+}
+@keyframes caer{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
 
-    .day h2 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .exercise {
-      margin-bottom: 15px;
-    }
-
-    .exercise label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
-
-    .sets {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .sets input {
-      width: 70px;
-      padding: 8px;
-      border-radius: 10px;
-      border: none;
-      text-align: center;
-    }
-  </style>
+/* ===== MENSAJES ===== */
+.mensaje{
+  position:fixed;
+  bottom:20%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.3);
+  padding:10px 20px;
+  border-radius:20px;
+  font-size:14px;
+  opacity:0;
+  transition:0.5s;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- MENU -->
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+<!-- MENÚ -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu" id="menu">
+  <a href="index.html">💖 Inicio</a>
+  <a href="rutina.html">🏋️ Rutina</a>
+  <a href="calendario.html">📅 Calendario</a>
+</div>
 
-  <div class="side-menu" id="sideMenu">
-    <div class="section">Rutina</div>
-    <a href="rutina.html?week=1">Semana 1</a>
-    <a href="rutina.html?week=2">Semana 2</a>
-    <a href="rutina.html?week=3">Semana 3</a>
-    <a href="rutina.html?week=4">Semana 4</a>
+<h1>Rutina de mi reina 💕</h1>
+<p>Entrenas por ti… pero yo te admiro en cada repetición 🥺</p>
 
-    <div class="section">Navegación</div>
-    <a href="index.html">🏠 Inicio</a>
-    <a href="calendario.html">📅 Calendario</a>
-  </div>
+<div class="selector">
+  <label>Selecciona la semana 💗</label><br><br>
+  <select onchange="cambiarSemana(this.value)">
+    <option value="">— elegir —</option>
+    <option value="s1">Semana 1</option>
+    <option value="s2">Semana 2</option>
+    <option value="s3">Semana 3</option>
+    <option value="s4">Semana 4</option>
+  </select>
+</div>
 
-  <div class="container">
-    <h1 id="title">Tu rutina 💙</h1>
-    <div class="note" id="weekNote"></div>
-    <div id="routine"></div>
-  </div>
+<!-- ===== SEMANA 1 ===== -->
+<div class="semana" id="s1">
+<h2>Semana 1 💖<br>3 series · 12 repes</h2>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("sideMenu");
-      menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
-    }
+<div class="ejercicio">Hip Thrust 💗
+<input id="s1-ht-1"> <input id="s1-ht-2"> <input id="s1-ht-3">
+</div>
 
-    const params = new URLSearchParams(window.location.search);
-    let week = params.get("week") || "1";
+<div class="ejercicio">Búlgara 🥺
+<input id="s1-bu-1"> <input id="s1-bu-2"> <input id="s1-bu-3">
+</div>
 
-    const routineData = [
-      {
-        day: "Día 1 – Glúteo",
-        exercises: [
-          "Abductor",
-          "Hip thrust",
-          "Búlgara",
-          "Step up polea",
-          "Patada máquina"
-        ]
-      },
-      {
-        day: "Día 2 – Upper Body",
-        exercises: [
-          "Press inclinado pecho barra",
-          "Hombro lateral polea",
-          "Hombro frontal mancuerna",
-          "Hombro trasero peck deck",
-          "Curl bíceps mancuerna",
-          "Extensión tríceps mecate polea",
-          "Tríceps codo copa polea mecate"
-        ]
-      },
-      {
-        day: "Día 3 – Lower Body (Cuádriceps)",
-        exercises: [
-          "Aductor",
-          "Sentadilla Smith",
-          "Pantorrilla a escoger",
-          "Extensión rodilla máquina + desplantes",
-          "Sentadilla buenos días"
-        ]
-      }
-    ];
+<button onclick="guardar()">💾 Guardar pesos</button>
+</div>
 
-    function renderRoutine() {
-      const routine = document.getElementById("routine");
-      routine.innerHTML = "";
+<!-- ===== SEMANA 2 ===== -->
+<div class="semana" id="s2">
+<h2>Semana 2 💕<br>3 series · 12 repes</h2>
 
-      const sets = week == 3 ? 4 : 3;
+<div class="ejercicio">Abductor 💗
+<input id="s2-ab-1"> <input id="s2-ab-2"> <input id="s2-ab-3">
+</div>
 
-      document.getElementById("title").innerText = `Semana ${week}`;
-      document.getElementById("weekNote").innerText =
-        week == 1 || week == 2
-          ? "3 series · 12 repeticiones"
-          : week == 3
-          ? "4 series · 12 repeticiones (mismo peso)"
-          : "3 series · 12 repeticiones (subimos peso)";
+<div class="ejercicio">Step Up Polea 🥰
+<input id="s2-su-1"> <input id="s2-su-2"> <input id="s2-su-3">
+</div>
 
-      routineData.forEach((d, dIndex) => {
-        const dayDiv = document.createElement("div");
-        dayDiv.className = "day";
-        dayDiv.innerHTML = `<h2>${d.day}</h2>`;
+<button onclick="guardar()">💾 Guardar pesos</button>
+</div>
 
-        d.exercises.forEach((ex, eIndex) => {
-          const exDiv = document.createElement("div");
-          exDiv.className = "exercise";
-          exDiv.innerHTML = `<label>${ex}</label>`;
+<!-- ===== SEMANA 3 ===== -->
+<div class="semana" id="s3">
+<h2>Semana 3 ❤️<br>4 series · 12 repes (mismo peso)</h2>
 
-          const setsDiv = document.createElement("div");
-          setsDiv.className = "sets";
+<div class="ejercicio">Press Inclinado 🥵
+<input id="s3-pr-1"> <input id="s3-pr-2"> <input id="s3-pr-3"> <input id="s3-pr-4">
+</div>
 
-          for (let i = 0; i < sets; i++) {
-            const input = document.createElement("input");
-            input.placeholder = `S${i + 1}`;
-            input.value =
-              localStorage.getItem(`w${week}-d${dIndex}-e${eIndex}-s${i}`) || "";
-            input.oninput = () =>
-              localStorage.setItem(
-                `w${week}-d${dIndex}-e${eIndex}-s${i}`,
-                input.value
-              );
-            setsDiv.appendChild(input);
-          }
+<button onclick="guardar()">💾 Guardar pesos</button>
+</div>
 
-          exDiv.appendChild(setsDiv);
-          dayDiv.appendChild(exDiv);
-        });
+<!-- ===== SEMANA 4 ===== -->
+<div class="semana" id="s4">
+<h2>Semana 4 💞<br>3 series · 12 repes (subimos peso)</h2>
 
-        routine.appendChild(dayDiv);
-      });
-    }
+<div class="ejercicio">Sentadilla Smith 😮‍💨
+<input id="s4-sm-1"> <input id="s4-sm-2"> <input id="s4-sm-3">
+</div>
 
-    renderRoutine();
-  </script>
+<button onclick="guardar()">💾 Guardar pesos</button>
+</div>
+
+<div class="mensaje" id="mensaje"></div>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById("menu");
+  m.style.left=m.style.left==="0px"?"-260px":"0px";
+}
+
+function cambiarSemana(id){
+  document.querySelectorAll(".semana").forEach(s=>s.style.display="none");
+  if(id) document.getElementById(id).style.display="block";
+}
+
+function guardar(){
+  document.querySelectorAll("input").forEach(i=>{
+    localStorage.setItem(i.id,i.value);
+  });
+  mostrarMensaje("Pesos guardados 💖 Estoy orgulloso de ti");
+}
+
+document.querySelectorAll("input").forEach(i=>{
+  i.value=localStorage.getItem(i.id)||"";
+});
+
+/* CORAZONES */
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="corazon";
+  c.innerHTML="💖";
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=(Math.random()*3+2)+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5000);
+},300);
+
+/* MENSAJES */
+const mensajes=[
+  "Eres hermosa incluso sudando 💕",
+  "Cada rep es amor 🥺",
+  "Mi campeona 💪💖",
+  "Te amo entrenando y sin entrenar"
+];
+function mostrarMensaje(t){
+  const m=document.getElementById("mensaje");
+  m.innerText=t;
+  m.style.opacity=1;
+  setTimeout(()=>m.style.opacity=0,2000);
+}
+setInterval(()=>{
+  mostrarMensaje(mensajes[Math.floor(Math.random()*mensajes.length)]);
+},4000);
+</script>
 
 </body>
 </html>
-
 
 
