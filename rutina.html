@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Rutina para vos 💙</title>
+  <title>Rutina 💙</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -28,21 +28,29 @@
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.9);
       padding-top: 60px;
       transition: 0.3s;
       z-index: 1000;
+      text-align: left;
+    }
+
+    .side-menu .section {
+      padding: 10px 20px;
+      font-size: 13px;
+      opacity: 0.7;
+      text-transform: uppercase;
     }
 
     .side-menu a {
       display: block;
-      padding: 15px;
+      padding: 14px 20px;
       color: white;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .side-menu a:hover {
@@ -58,17 +66,6 @@
 
     h1 {
       margin-bottom: 10px;
-    }
-
-    .week-selector {
-      margin: 20px 0;
-    }
-
-    select {
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      font-size: 14px;
     }
 
     .note {
@@ -91,13 +88,12 @@
     }
 
     .exercise {
-      display: flex;
-      flex-direction: column;
       margin-bottom: 15px;
     }
 
     .exercise label {
-      margin-bottom: 5px;
+      display: block;
+      margin-bottom: 6px;
       font-size: 14px;
     }
 
@@ -114,20 +110,6 @@
       border: none;
       text-align: center;
     }
-
-    .save-btn {
-      margin-top: 20px;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    .save-btn:hover {
-      background: rgba(255,255,255,0.35);
-    }
   </style>
 </head>
 
@@ -135,35 +117,33 @@
 
   <!-- MENU -->
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
   <div class="side-menu" id="sideMenu">
+    <div class="section">Rutina</div>
+    <a href="rutina.html?week=1">Semana 1</a>
+    <a href="rutina.html?week=2">Semana 2</a>
+    <a href="rutina.html?week=3">Semana 3</a>
+    <a href="rutina.html?week=4">Semana 4</a>
+
+    <div class="section">Navegación</div>
     <a href="index.html">🏠 Inicio</a>
-    <a href="rutina.html">🏋️ Rutina</a>
     <a href="calendario.html">📅 Calendario</a>
   </div>
 
   <div class="container">
-    <h1>Tu rutina 💙</h1>
-
-    <div class="week-selector">
-      <select id="weekSelect" onchange="renderRoutine()">
-        <option value="1">Semana 1–2 (3×12)</option>
-        <option value="3">Semana 3 (4×12)</option>
-        <option value="4">Semana 4 (3×12 ↑ peso)</option>
-      </select>
-    </div>
-
+    <h1 id="title">Tu rutina 💙</h1>
     <div class="note" id="weekNote"></div>
-
     <div id="routine"></div>
-
-    <button class="save-btn" onclick="saveData()">Guardar pesos 💾</button>
   </div>
 
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
-      menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
+      menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
     }
+
+    const params = new URLSearchParams(window.location.search);
+    let week = params.get("week") || "1";
 
     const routineData = [
       {
@@ -201,18 +181,18 @@
     ];
 
     function renderRoutine() {
-      const week = document.getElementById("weekSelect").value;
       const routine = document.getElementById("routine");
       routine.innerHTML = "";
 
-      let sets = week == 3 ? 4 : 3;
+      const sets = week == 3 ? 4 : 3;
 
+      document.getElementById("title").innerText = `Semana ${week}`;
       document.getElementById("weekNote").innerText =
-        week == 1
-          ? "Semanas 1 y 2 · 3 series · 12 repeticiones"
+        week == 1 || week == 2
+          ? "3 series · 12 repeticiones"
           : week == 3
-          ? "Semana 3 · 4 series · 12 repeticiones (mismo peso)"
-          : "Semana 4 · 3 series · 12 repeticiones (subimos peso)";
+          ? "4 series · 12 repeticiones (mismo peso)"
+          : "3 series · 12 repeticiones (subimos peso)";
 
       routineData.forEach((d, dIndex) => {
         const dayDiv = document.createElement("div");
@@ -229,7 +209,7 @@
 
           for (let i = 0; i < sets; i++) {
             const input = document.createElement("input");
-            input.placeholder = `Serie ${i + 1}`;
+            input.placeholder = `S${i + 1}`;
             input.value =
               localStorage.getItem(`w${week}-d${dIndex}-e${eIndex}-s${i}`) || "";
             input.oninput = () =>
@@ -246,10 +226,6 @@
 
         routine.appendChild(dayDiv);
       });
-    }
-
-    function saveData() {
-      alert("Pesos guardados 💙");
     }
 
     renderRoutine();
