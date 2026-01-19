@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Tu Rutina 💪💖</title>
+<title>Tu Rutina 💖</title>
 
 <style>
 body {
@@ -14,7 +14,7 @@ body {
   overflow-x: hidden;
 }
 
-/* BOTÓN MENÚ */
+/* MENÚ */
 #menu-btn {
   position: fixed;
   top: 20px;
@@ -24,21 +24,16 @@ body {
   z-index: 1001;
 }
 
-/* MENÚ LATERAL */
 #side-menu {
   position: fixed;
   top: 0;
   left: -260px;
   width: 260px;
   height: 100%;
-  background: rgba(255, 105, 180, 0.95);
+  background: rgba(255,105,180,0.95);
   padding: 40px 20px;
   transition: 0.3s;
   z-index: 1000;
-}
-
-#side-menu h2 {
-  margin-bottom: 30px;
 }
 
 #side-menu a {
@@ -56,102 +51,83 @@ body {
   margin: auto;
 }
 
-h1 {
-  font-size: 36px;
+.week-select {
+  margin: 20px 0;
 }
 
-.week {
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  padding: 20px;
-  margin: 30px 0;
-}
-
-.day {
-  margin-top: 20px;
-}
-
-.day h3 {
-  margin-bottom: 10px;
-  font-size: 22px;
+select {
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
 }
 
 .exercise {
   background: rgba(255,255,255,0.25);
-  border-radius: 15px;
-  padding: 10px;
-  margin: 8px 0;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.inputs {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 input {
-  width: 70px;
+  width: 60px;
   border-radius: 10px;
   border: none;
   padding: 6px;
   text-align: center;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  background: white;
+  color: #ff4f9a;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BOTÓN MENÚ -->
 <div id="menu-btn" onclick="toggleMenu()">☰</div>
 
-<!-- MENÚ -->
 <div id="side-menu">
-  <h2>💗 Menú</h2>
   <a href="index.html">🏠 Inicio</a>
   <a href="rutina.html">🏋️ Rutina</a>
   <a href="calendario.html">📅 Calendario</a>
 </div>
 
 <div class="container">
-  <h1>Tu Rutina 💖</h1>
+  <h1>Tu Rutina 💪💖</h1>
 
-  <p>Semanas 1 y 2: <strong>3 series · 12 repes</strong></p>
-  <p>Semanas 3: <strong>4 series · 12 repes (mismo peso)</strong></p>
-  <p>Semana 4: <strong>3 series · 12 repes (subimos peso)</strong></p>
+  <p>
+    Semanas 1–2: 3×12<br>
+    Semana 3: 4×12 (mismo peso)<br>
+    Semana 4: 3×12 (subimos peso)
+  </p>
 
-  <!-- DÍA 1 -->
-  <div class="week">
-    <h2>Día 1 – Glúteo 🍑</h2>
-
-    <div class="exercise"><span>Abductor</span><input data-key="abductor"></div>
-    <div class="exercise"><span>Hip Thrust</span><input data-key="hipthrust"></div>
-    <div class="exercise"><span>Búlgara</span><input data-key="bulgara"></div>
-    <div class="exercise"><span>Step up polea</span><input data-key="stepup"></div>
-    <div class="exercise"><span>Patada máquina</span><input data-key="patada"></div>
+  <div class="week-select">
+    <select id="weekSelect" onchange="renderExercises()">
+      <option value="1">Semana 1</option>
+      <option value="2">Semana 2</option>
+      <option value="3">Semana 3</option>
+      <option value="4">Semana 4</option>
+    </select>
   </div>
 
-  <!-- DÍA 2 -->
-  <div class="week">
-    <h2>Día 2 – Upper Body 💪</h2>
+  <div id="routine"></div>
 
-    <div class="exercise"><span>Press inclinado barra</span><input data-key="pressinclinado"></div>
-    <div class="exercise"><span>Hombro lateral polea</span><input data-key="laterales"></div>
-    <div class="exercise"><span>Hombro frontal mancuerna</span><input data-key="frontal"></div>
-    <div class="exercise"><span>Hombro trasero peck deck</span><input data-key="trasero"></div>
-    <div class="exercise"><span>Curl bíceps mancuerna</span><input data-key="biceps"></div>
-    <div class="exercise"><span>Extensión tríceps mecate</span><input data-key="triceps1"></div>
-    <div class="exercise"><span>Tríceps copa mecate</span><input data-key="triceps2"></div>
-  </div>
-
-  <!-- DÍA 3 -->
-  <div class="week">
-    <h2>Día 3 – Cuádriceps 🦵</h2>
-
-    <div class="exercise"><span>Aductor</span><input data-key="aductor"></div>
-    <div class="exercise"><span>Sentadilla Smith</span><input data-key="smith"></div>
-    <div class="exercise"><span>Pantorrilla</span><input data-key="pantorrilla"></div>
-    <div class="exercise"><span>Extensión rodilla + desplantes</span><input data-key="extension"></div>
-    <div class="exercise"><span>Buenos días</span><input data-key="buenosdias"></div>
-  </div>
-
-  <p>Repetir estructura si entrenás más días 💕</p>
+  <button onclick="saveAll()">💾 Guardar pesos</button>
 </div>
 
 <script>
@@ -160,15 +136,61 @@ function toggleMenu() {
   menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
 }
 
-/* GUARDADO AUTOMÁTICO */
-document.querySelectorAll("input").forEach(input => {
-  const key = input.dataset.key;
-  input.value = localStorage.getItem(key) || "";
+const exercises = [
+  "Abductor",
+  "Hip Thrust",
+  "Búlgara",
+  "Step up polea",
+  "Patada máquina",
+  "Press inclinado barra",
+  "Hombro lateral polea",
+  "Hombro frontal mancuerna",
+  "Hombro trasero peck deck",
+  "Curl bíceps mancuerna",
+  "Extensión tríceps mecate",
+  "Tríceps copa mecate",
+  "Aductor",
+  "Sentadilla Smith",
+  "Pantorrilla",
+  "Extensión rodilla + desplantes",
+  "Buenos días"
+];
 
-  input.addEventListener("input", () => {
-    localStorage.setItem(key, input.value);
+function renderExercises() {
+  const week = document.getElementById("weekSelect").value;
+  const sets = week == 3 ? 4 : 3;
+  const container = document.getElementById("routine");
+  container.innerHTML = "";
+
+  exercises.forEach(ex => {
+    const div = document.createElement("div");
+    div.className = "exercise";
+    div.innerHTML = `<strong>${ex}</strong>`;
+
+    const inputs = document.createElement("div");
+    inputs.className = "inputs";
+
+    for (let i = 1; i <= sets; i++) {
+      const input = document.createElement("input");
+      input.placeholder = `S${i}`;
+      input.value = localStorage.getItem(`${ex}-w${week}-s${i}`) || "";
+      input.dataset.key = `${ex}-w${week}-s${i}`;
+      inputs.appendChild(input);
+    }
+
+    div.appendChild(inputs);
+    container.appendChild(div);
   });
-});
+}
+
+function saveAll() {
+  document.querySelectorAll("input").forEach(input => {
+    localStorage.setItem(input.dataset.key, input.value);
+  });
+  alert("Pesos guardados 💖");
+}
+
+renderExercises();
 </script>
 
 </body>
