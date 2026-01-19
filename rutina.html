@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rutina para Valeria 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(180deg, #ff9acb, #ffc1dc);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border-radius: 25px;
+  margin-top: 25px;
+}
+
+.exercise {
+  margin: 15px 0;
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 10px;
+  align-items: center;
+}
+
+input {
+  border: none;
+  border-radius: 15px;
+  padding: 8px;
+  text-align: center;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 15px 30px;
+  background: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🏋️ Rutina hecha con amor 💖</h1>
+<p>Porque quiero verte fuerte, sana y feliz.  
+Esta rutina es solo para vos 🥺</p>
+
+<div class="card">
+  <h2>📅 Progresión por semanas</h2>
+  <p><strong>Semana 1 y 2:</strong> 3 series – 12 repes</p>
+  <p><strong>Semana 3:</strong> 4 series – 12 repes (mismo peso)</p>
+  <p><strong>Semana 4:</strong> 3 series – 12 repes (aumentamos peso)</p>
+</div>
+
+<!-- DIA 1 -->
+<div class="card">
+  <h2>🍑 Día 1 – Glúteo</h2>
+
+  <div class="exercise">Abductor <input placeholder="kg" data-key="abductor"></div>
+  <div class="exercise">Hip Thrust <input placeholder="kg" data-key="hipthrust"></div>
+  <div class="exercise">Búlgara <input placeholder="kg" data-key="bulgara"></div>
+  <div class="exercise">Step up polea <input placeholder="kg" data-key="stepup"></div>
+  <div class="exercise">Patada máquina <input placeholder="kg" data-key="patada"></div>
+</div>
+
+<!-- DIA 2 -->
+<div class="card">
+  <h2>💪 Día 2 – Upper Body</h2>
+
+  <div class="exercise">Press inclinado barra <input placeholder="kg" data-key="press"></div>
+  <div class="exercise">Hombro lateral polea <input placeholder="kg" data-key="lateral"></div>
+  <div class="exercise">Hombro frontal mancuerna <input placeholder="kg" data-key="frontal"></div>
+  <div class="exercise">Hombro trasero peck deck <input placeholder="kg" data-key="trasero"></div>
+  <div class="exercise">Curl bícep mancuerna <input placeholder="kg" data-key="bicep"></div>
+  <div class="exercise">Extensión trícep mecate <input placeholder="kg" data-key="tricep1"></div>
+  <div class="exercise">Trícep copa polea <input placeholder="kg" data-key="tricep2"></div>
+</div>
+
+<!-- DIA 3 -->
+<div class="card">
+  <h2>🦵 Día 3 – Lower Body (Cuádriceps)</h2>
+
+  <div class="exercise">Aductor <input placeholder="kg" data-key="aductor"></div>
+  <div class="exercise">Sentadilla Smith <input placeholder="kg" data-key="smith"></div>
+  <div class="exercise">Pantorrilla (a escoger) <input placeholder="kg" data-key="pantorrilla"></div>
+  <div class="exercise">Extensión rodilla máquina <input placeholder="kg" data-key="extension"></div>
+  <div class="exercise">Desplantes (misma máquina) <input placeholder="kg" data-key="desplantes"></div>
+  <div class="exercise">Sentadilla buenos días <input placeholder="kg" data-key="buenosdias"></div>
+</div>
+
+<p style="margin-top:30px;">
+Si asistís más días, simplemente repetís el ciclo 💕
+</p>
+
+<a class="back" href="index.html">⬅ Volver</a>
+
+</div>
+
+<script>
+// GUARDAR PESOS AUTOMÁTICAMENTE
+document.querySelectorAll("input").forEach(input => {
+  const key = input.dataset.key;
+  input.value = localStorage.getItem(key) || "";
+
+  input.addEventListener("input", () => {
+    localStorage.setItem(key, input.value);
+  });
+});
+</script>
+
+</body>
+</html>
