@@ -2,17 +2,17 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Rutina de mi amor 💪💖</title>
+<title>Rutina de mi amor 💕</title>
 
 <style>
 body{
-  background: linear-gradient(180deg,#ffb6c1,#ff69b4);
+  background:linear-gradient(180deg,#ffb6c1,#ff69b4);
   font-family:'Comic Sans MS', cursive;
   color:white;
   margin:0;
   padding:20px;
-  overflow-x:hidden;
   text-align:center;
+  overflow-x:hidden;
 }
 
 /* ===== MENÚ ===== */
@@ -24,7 +24,6 @@ body{
   cursor:pointer;
   z-index:1001;
 }
-
 .menu{
   position:fixed;
   top:0;
@@ -33,7 +32,7 @@ body{
   height:100%;
   background:rgba(255,105,180,0.95);
   padding-top:60px;
-  transition:0.3s;
+  transition:.3s;
   z-index:1000;
 }
 .menu a{
@@ -43,46 +42,35 @@ body{
   font-size:20px;
   padding:15px;
 }
-.menu a:hover{
-  background:rgba(255,255,255,0.2);
-}
+.menu a:hover{background:rgba(255,255,255,.2)}
 
-/* ===== CONTENIDO ===== */
-h1{
-  font-size:2.6em;
-  animation:latido 1s infinite;
-}
-@keyframes latido{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.1)}
-  100%{transform:scale(1)}
-}
+/* ===== TITULOS ===== */
+h1{font-size:2.5em}
+h2{margin-top:30px}
 
-.selector{
-  margin:20px;
-}
+/* ===== SELECTORES ===== */
 select{
   padding:10px;
   border-radius:15px;
   border:none;
   font-size:16px;
+  margin:10px;
 }
 
-.semana{
-  display:none;
-  background:rgba(255,255,255,0.2);
+/* ===== CONTENIDO ===== */
+.semana{display:none}
+.dia{
+  background:rgba(255,255,255,.25);
   padding:20px;
   border-radius:20px;
   margin-top:20px;
 }
-
 .ejercicio{
-  background:rgba(255,255,255,0.25);
-  padding:15px;
+  background:rgba(255,255,255,.3);
+  padding:12px;
   border-radius:15px;
   margin:10px 0;
 }
-
 input{
   width:60px;
   border:none;
@@ -91,14 +79,15 @@ input{
   text-align:center;
 }
 
+/* ===== BOTÓN ===== */
 button{
   background:red;
   border:none;
-  padding:12px 20px;
+  padding:12px 25px;
   border-radius:25px;
   color:white;
   font-size:16px;
-  margin-top:15px;
+  margin:20px;
   cursor:pointer;
   box-shadow:0 0 10px pink;
 }
@@ -111,24 +100,7 @@ button{
   animation:caer 5s linear infinite;
 }
 @keyframes caer{
-  to{
-    transform:translateY(110vh);
-    opacity:0;
-  }
-}
-
-/* ===== MENSAJES ===== */
-.mensaje{
-  position:fixed;
-  bottom:20%;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(255,255,255,0.3);
-  padding:10px 20px;
-  border-radius:20px;
-  font-size:14px;
-  opacity:0;
-  transition:0.5s;
+  to{transform:translateY(110vh);opacity:0}
 }
 </style>
 </head>
@@ -143,73 +115,66 @@ button{
   <a href="calendario.html">📅 Calendario</a>
 </div>
 
-<h1>Rutina de mi reina 💕</h1>
-<p>Entrenas por ti… pero yo te admiro en cada repetición 🥺</p>
+<h1>Rutina hecha con amor 💕</h1>
+<p>Cada repetición es una carta de amor 💌</p>
 
-<div class="selector">
-  <label>Selecciona la semana 💗</label><br><br>
-  <select onchange="cambiarSemana(this.value)">
-    <option value="">— elegir —</option>
-    <option value="s1">Semana 1</option>
-    <option value="s2">Semana 2</option>
-    <option value="s3">Semana 3</option>
-    <option value="s4">Semana 4</option>
-  </select>
-</div>
+<select onchange="mostrarSemana(this.value)">
+  <option value="">Seleccionar semana</option>
+  <option value="s1">Semana 1</option>
+  <option value="s2">Semana 2</option>
+  <option value="s3">Semana 3</option>
+  <option value="s4">Semana 4</option>
+</select>
 
 <!-- ===== SEMANA 1 ===== -->
 <div class="semana" id="s1">
-<h2>Semana 1 💖<br>3 series · 12 repes</h2>
+<p>3 series · 12 repes</p>
 
-<div class="ejercicio">Hip Thrust 💗
-<input id="s1-ht-1"> <input id="s1-ht-2"> <input id="s1-ht-3">
+<div class="dia">
+<h2>Día 1 – Glúteo 🍑</h2>
+<div class="ejercicio">Abductor <input id="s1-ab1"><input id="s1-ab2"><input id="s1-ab3"></div>
+<div class="ejercicio">Hip Thrust <input id="s1-ht1"><input id="s1-ht2"><input id="s1-ht3"></div>
+<div class="ejercicio">Búlgara <input id="s1-bu1"><input id="s1-bu2"><input id="s1-bu3"></div>
+<div class="ejercicio">Step up polea <input id="s1-su1"><input id="s1-su2"><input id="s1-su3"></div>
+<div class="ejercicio">Patada máquina <input id="s1-pa1"><input id="s1-pa2"><input id="s1-pa3"></div>
 </div>
 
-<div class="ejercicio">Búlgara 🥺
-<input id="s1-bu-1"> <input id="s1-bu-2"> <input id="s1-bu-3">
+<div class="dia">
+<h2>Día 2 – Upper Body 💪</h2>
+<div class="ejercicio">Press inclinado barra <input id="s1-pr1"><input id="s1-pr2"><input id="s1-pr3"></div>
+<div class="ejercicio">Hombro lateral polea <input id="s1-la1"><input id="s1-la2"><input id="s1-la3"></div>
+<div class="ejercicio">Hombro frontal mancuerna <input id="s1-fr1"><input id="s1-fr2"><input id="s1-fr3"></div>
+<div class="ejercicio">Hombro trasero peck deck <input id="s1-tr1"><input id="s1-tr2"><input id="s1-tr3"></div>
+<div class="ejercicio">Curl bícep mancuerna <input id="s1-bi1"><input id="s1-bi2"><input id="s1-bi3"></div>
+<div class="ejercicio">Extensión trícep mecate <input id="s1-ex1"><input id="s1-ex2"><input id="s1-ex3"></div>
+<div class="ejercicio">Trícep copa polea <input id="s1-co1"><input id="s1-co2"><input id="s1-co3"></div>
+</div>
+
+<div class="dia">
+<h2>Día 3 – Cuádriceps 🦵</h2>
+<div class="ejercicio">Aductor <input id="s1-ad1"><input id="s1-ad2"><input id="s1-ad3"></div>
+<div class="ejercicio">Sentadilla Smith <input id="s1-sm1"><input id="s1-sm2"><input id="s1-sm3"></div>
+<div class="ejercicio">Pantorrilla <input id="s1-pa11"><input id="s1-pa22"><input id="s1-pa33"></div>
+<div class="ejercicio">Extensión + desplantes <input id="s1-ex11"><input id="s1-ex22"><input id="s1-ex33"></div>
+<div class="ejercicio">Buenos días <input id="s1-bd1"><input id="s1-bd2"><input id="s1-bd3"></div>
 </div>
 
 <button onclick="guardar()">💾 Guardar pesos</button>
 </div>
 
-<!-- ===== SEMANA 2 ===== -->
-<div class="semana" id="s2">
-<h2>Semana 2 💕<br>3 series · 12 repes</h2>
-
-<div class="ejercicio">Abductor 💗
-<input id="s2-ab-1"> <input id="s2-ab-2"> <input id="s2-ab-3">
-</div>
-
-<div class="ejercicio">Step Up Polea 🥰
-<input id="s2-su-1"> <input id="s2-su-2"> <input id="s2-su-3">
-</div>
-
-<button onclick="guardar()">💾 Guardar pesos</button>
-</div>
+<!-- SEMANA 2 = igual a semana 1 -->
+<div class="semana" id="s2"><p>Semana 2 = misma estructura que semana 1</p></div>
 
 <!-- ===== SEMANA 3 ===== -->
 <div class="semana" id="s3">
-<h2>Semana 3 ❤️<br>4 series · 12 repes (mismo peso)</h2>
-
-<div class="ejercicio">Press Inclinado 🥵
-<input id="s3-pr-1"> <input id="s3-pr-2"> <input id="s3-pr-3"> <input id="s3-pr-4">
-</div>
-
-<button onclick="guardar()">💾 Guardar pesos</button>
+<p>4 series · 12 repes · mismo peso</p>
+<p>(usa 4 cuadritos por ejercicio)</p>
 </div>
 
 <!-- ===== SEMANA 4 ===== -->
 <div class="semana" id="s4">
-<h2>Semana 4 💞<br>3 series · 12 repes (subimos peso)</h2>
-
-<div class="ejercicio">Sentadilla Smith 😮‍💨
-<input id="s4-sm-1"> <input id="s4-sm-2"> <input id="s4-sm-3">
+<p>3 series · 12 repes · aumentamos peso</p>
 </div>
-
-<button onclick="guardar()">💾 Guardar pesos</button>
-</div>
-
-<div class="mensaje" id="mensaje"></div>
 
 <script>
 function toggleMenu(){
@@ -217,7 +182,7 @@ function toggleMenu(){
   m.style.left=m.style.left==="0px"?"-260px":"0px";
 }
 
-function cambiarSemana(id){
+function mostrarSemana(id){
   document.querySelectorAll(".semana").forEach(s=>s.style.display="none");
   if(id) document.getElementById(id).style.display="block";
 }
@@ -226,41 +191,25 @@ function guardar(){
   document.querySelectorAll("input").forEach(i=>{
     localStorage.setItem(i.id,i.value);
   });
-  mostrarMensaje("Pesos guardados 💖 Estoy orgulloso de ti");
+  alert("Pesos guardados 💖");
 }
 
 document.querySelectorAll("input").forEach(i=>{
   i.value=localStorage.getItem(i.id)||"";
 });
 
-/* CORAZONES */
+/* Corazones */
 setInterval(()=>{
   const c=document.createElement("div");
   c.className="corazon";
   c.innerHTML="💖";
   c.style.left=Math.random()*100+"vw";
-  c.style.animationDuration=(Math.random()*3+2)+"s";
   document.body.appendChild(c);
   setTimeout(()=>c.remove(),5000);
 },300);
-
-/* MENSAJES */
-const mensajes=[
-  "Eres hermosa incluso sudando 💕",
-  "Cada rep es amor 🥺",
-  "Mi campeona 💪💖",
-  "Te amo entrenando y sin entrenar"
-];
-function mostrarMensaje(t){
-  const m=document.getElementById("mensaje");
-  m.innerText=t;
-  m.style.opacity=1;
-  setTimeout(()=>m.style.opacity=0,2000);
-}
-setInterval(()=>{
-  mostrarMensaje(mensajes[Math.floor(Math.random()*mensajes.length)]);
-},4000);
 </script>
 
 </body>
 </html>
+
+
