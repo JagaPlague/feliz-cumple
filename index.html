@@ -7,23 +7,25 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
   background: linear-gradient(180deg, #ff9acb, #ffc1dc);
   color: white;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* MENÚ */
+/* BOTÓN MENÚ */
 #menu-btn {
   position: fixed;
   top: 20px;
   left: 20px;
   font-size: 30px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 1001;
 }
 
+/* MENÚ LATERAL */
 #side-menu {
   position: fixed;
   top: 0;
@@ -33,7 +35,7 @@ body {
   background: rgba(255, 105, 180, 0.95);
   padding: 40px 20px;
   transition: 0.3s;
-  z-index: 9998;
+  z-index: 1000;
 }
 
 #side-menu h2 {
@@ -49,59 +51,49 @@ body {
 }
 
 /* CONTENIDO */
+.container {
+  padding: 60px 20px;
+}
+
 h1 {
   font-size: 42px;
-  margin-top: 80px;
-  animation: latido 1s infinite;
+  margin-bottom: 10px;
 }
 
-@keyframes latido {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 40px;
 }
 
-button {
-  background: red;
-  border: none;
-  padding: 15px 25px;
-  color: white;
-  font-size: 18px;
+/* BOTONES PRINCIPALES */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.button {
+  background: white;
+  color: #ff4f9a;
+  padding: 15px 30px;
   border-radius: 30px;
-  cursor: pointer;
-  margin: 15px;
-  box-shadow: 0 0 10px pink;
+  font-size: 20px;
+  text-decoration: none;
+  width: 260px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
 }
 
-.seccion {
-  display: none;
-  margin: 30px auto;
-  max-width: 600px;
-  background: rgba(255,255,255,0.2);
-  padding: 20px;
-  border-radius: 20px;
+.button:hover {
+  transform: scale(1.05);
 }
 
-img {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-/* CORAZONES */
-.corazon {
-  position: fixed;
-  top: -10px;
-  font-size: 30px;
-  animation: caer 5s linear infinite;
-}
-
-@keyframes caer {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
+/* MENSAJE FINAL */
+.love {
+  margin-top: 50px;
+  font-size: 18px;
+  opacity: 0.9;
 }
 </style>
 </head>
@@ -115,95 +107,21 @@ img {
 <div id="side-menu">
   <h2>💗 Menú</h2>
   <a href="rutina.html">🏋️ Rutina</a>
+  <a href="calendario.html">📅 Calendario</a>
 </div>
 
-<h1>🎂 Feliz Cumpleaños Valeria 💖</h1>
-<p>Esta página es solo para vos 🥺</p>
+<!-- CONTENIDO PRINCIPAL -->
+<div class="container">
+  <h1>Feliz Cumple, Valeria 💕</h1>
+  <div class="subtitle">
+    Esta página es uno de tus regalos  
+    <br>pero no es el único 👀✨
+  </div>
 
-<button onclick="mostrar('uno')">💝 Empezar</button>
+  <div class="buttons">
+    <a href="rutina.html" class="button">💪 Tu Rutina</a>
+    <a href="calendario.html" class="button">📆 Nuest
 
-<div class="seccion" id="uno">
-  <h2>💌 Mensajito</h2>
-  <p>
-    Quería darte algo diferente…  
-    algo que no se rompa,  
-    algo que siempre puedas volver a ver.
-  </p>
-  <button onclick="mostrar('dos')">💗 Seguir</button>
-</div>
 
-<div class="seccion" id="dos">
-  <h2>📸 Nosotros</h2>
-  <p>
-    De todos los lugares del mundo,  
-    mi lugar favorito siempre es contigo.
-  </p>
-  <img src="foto1.jpg" alt="Nosotros">
-  <button onclick="mostrar('tres')">🥹 Continuar</button>
-</div>
-
-<div class="seccion" id="tres">
-  <h2>💞 Mi persona favorita</h2>
-  <p>
-    Verte sonreír,  
-    verte manejar,  
-    verte existir…  
-    me hace sentir en casa.
-  </p>
-  <img src="foto2.jpg" alt="Ella">
-  <button onclick="mostrar('cuatro')">🎁 Siguiente</button>
-</div>
-
-<div class="seccion" id="cuatro">
-  <h2>🎁 Importante</h2>
-  <p>
-    Este es <strong>UNO</strong> de tus regalos.  
-    <br><br>
-    Hay más…  
-    <br>
-    unas botellitas 🍾  
-    <br>
-    y una ropa 👕  
-    <br><br>
-    (todavía son sorpresa 😌)
-  </p>
-  <button onclick="mostrar('final')">💖 Final</button>
-</div>
-
-<div class="seccion" id="final">
-  <h2>💖 Para siempre</h2>
-  <p>
-    Gracias por existir.  
-    <br>
-    Gracias por ser tú.  
-    <br><br>
-    Feliz cumpleaños, amor 💕
-  </p>
-</div>
-
-<script>
-function toggleMenu() {
-  const menu = document.getElementById("side-menu");
-  menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
-}
-
-function mostrar(id) {
-  document.getElementById(id).style.display = "block";
-}
-
-/* CORAZONES */
-setInterval(() => {
-  const corazon = document.createElement("div");
-  corazon.classList.add("corazon");
-  corazon.innerHTML = "💖";
-  corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
-  document.body.appendChild(corazon);
-  setTimeout(() => corazon.remove(), 5000);
-}, 300);
-</script>
-
-</body>
-</html>
 
 
