@@ -2,15 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Para Valeria 💙</title>
+  <title>Para Valeria 💕</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
+      font-family: 'Comic Sans MS', 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #fff;
       text-align: center;
       overflow-x: hidden;
     }
@@ -20,7 +20,7 @@
       position: fixed;
       top: 15px;
       left: 15px;
-      font-size: 26px;
+      font-size: 28px;
       cursor: pointer;
       z-index: 1001;
     }
@@ -31,7 +31,7 @@
       left: -250px;
       width: 250px;
       height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(255,105,180,0.95);
       padding-top: 60px;
       transition: 0.3s;
       z-index: 1000;
@@ -42,28 +42,27 @@
       padding: 15px;
       color: white;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .side-menu a:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.25);
     }
 
-    /* ===== CONTENIDO ===== */
     .container {
-      padding: 80px 20px 40px;
+      padding: 90px 20px 40px;
       max-width: 700px;
       margin: auto;
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 2.6em;
       margin-bottom: 15px;
     }
 
     .intro {
-      font-size: 16px;
-      opacity: 0.9;
+      font-size: 17px;
+      opacity: 0.95;
       margin-bottom: 30px;
     }
 
@@ -71,7 +70,7 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-bottom: 30px;
+      margin: 30px 0;
       flex-wrap: wrap;
     }
 
@@ -79,33 +78,32 @@
       width: 160px;
       height: 220px;
       object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      border-radius: 25px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.35);
     }
 
     button {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.3);
       color: white;
       border: none;
       padding: 15px 30px;
       border-radius: 30px;
-      font-size: 16px;
+      font-size: 17px;
       cursor: pointer;
       transition: 0.3s;
-      margin: 10px;
+      margin: 15px 0;
     }
 
     button:hover {
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.45);
     }
 
-    /* ===== REGALO ===== */
     #gift {
       display: none;
       background: rgba(255,255,255,0.95);
-      color: #333;
+      color: #ff5e8e;
       padding: 25px;
-      border-radius: 20px;
+      border-radius: 25px;
       margin-top: 30px;
       animation: pop 0.4s ease;
     }
@@ -116,15 +114,15 @@
     }
 
     .final-message {
-      margin-top: 40px;
+      margin-top: 45px;
       font-size: 16px;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     /* ===== MENSAJES FLOTANTES ===== */
     .floating {
       position: fixed;
-      font-size: 13px;
+      font-size: 14px;
       opacity: 0;
       animation: floatMsg 2.5s ease forwards;
       pointer-events: none;
@@ -132,9 +130,9 @@
 
     @keyframes floatMsg {
       0% { opacity: 0; transform: translateY(10px); }
-      20% { opacity: 0.4; }
-      80% { opacity: 0.4; }
-      100% { opacity: 0; transform: translateY(-20px); }
+      20% { opacity: 0.5; }
+      80% { opacity: 0.5; }
+      100% { opacity: 0; transform: translateY(-25px); }
     }
   </style>
 </head>
@@ -155,12 +153,16 @@
   </audio>
 
   <div class="container">
-    <h1>Para vos, Valeria 💙</h1>
+    <h1>Feliz cumpleaños, amor 💖</h1>
 
     <div class="intro">
-      Esta página no es perfecta,  
-      pero está hecha con todo el amor que siento por vos.  
-      Y eso… es infinito.
+      Esta página es innecesariamente cursi,  
+      exageradamente romántica  
+      y un poquito cringe…  
+      pero así de grande es lo que siento por vos 💕  
+      <br><br>
+      Y sí, suena Billie Eilish  
+      porque es tu cantante favorita 🖤
     </div>
 
     <div class="photos">
@@ -168,23 +170,26 @@
       <img src="foto2.jpg" alt="Nosotros">
     </div>
 
-    <button onclick="showGift()">Abrir regalo 🎁</button>
+    <button onclick="showGift()">Abrir uno de tus regalos 🎁</button>
 
     <div id="gift">
-      <h3>Esto es solo una parte…</h3>
+      <h3>Este es solo uno de tus regalos 💝</h3>
       <p>
-        Porque los regalos más lindos  
-        no se envuelven,  
-        se viven, se cuidan  
-        y se eligen todos los días.
+        Hay más sorpresas,  
+        más detalles  
+        y muchas cosas que todavía no viste…  
+        porque vos merecés TODO 💕
       </p>
     </div>
 
     <div class="final-message">
-      Gracias por ser mi lugar seguro,  
-      mi persona favorita,  
-      y la razón por la que quiero ser mejor cada día.  
-      Te amo 💙
+      Gracias por existir,  
+      por ser vos,  
+      por hacerme sentir en casa.  
+      <br><br>
+      Ojalá esta página quede como un recuerdo  
+      de lo mucho que te amo hoy  
+      y siempre 💖
     </div>
   </div>
 
@@ -199,11 +204,12 @@
     }
 
     const messages = [
-      "Te amo 💙",
+      "Te amo 💕",
+      "Sos mi persona favorita",
       "Siempre vos",
       "Mi lugar seguro",
-      "Gracias por existir",
-      "Elegirte todos los días"
+      "Amor eterno 💖",
+      "Mi corazón es tuyo"
     ];
 
     setInterval(() => {
@@ -214,11 +220,12 @@
       msg.style.top = Math.random() * 80 + 10 + "%";
       document.body.appendChild(msg);
       setTimeout(() => msg.remove(), 2500);
-    }, 1200);
+    }, 1000);
   </script>
 
 </body>
 </html>
+
 
 
 
