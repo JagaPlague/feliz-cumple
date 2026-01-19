@@ -15,88 +15,52 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== MENÚ ===== */
+/* MENÚ */
 .menu-btn{
-  position:fixed;
-  top:15px;
-  left:15px;
-  font-size:30px;
-  cursor:pointer;
-  z-index:1001;
+  position:fixed;top:15px;left:15px;
+  font-size:30px;cursor:pointer;z-index:1001;
 }
 .menu{
-  position:fixed;
-  top:0;
-  left:-260px;
-  width:250px;
-  height:100%;
+  position:fixed;top:0;left:-260px;
+  width:250px;height:100%;
   background:rgba(255,105,180,0.95);
-  padding-top:60px;
-  transition:.3s;
-  z-index:1000;
+  padding-top:60px;transition:.3s;z-index:1000;
 }
 .menu a{
-  display:block;
-  color:white;
-  text-decoration:none;
-  font-size:20px;
-  padding:15px;
+  display:block;color:white;text-decoration:none;
+  font-size:20px;padding:15px;
 }
 .menu a:hover{background:rgba(255,255,255,.2)}
 
-/* ===== TITULOS ===== */
-h1{font-size:2.5em}
-h2{margin-top:30px}
-
-/* ===== SELECTORES ===== */
+h1{font-size:2.4em}
 select{
-  padding:10px;
-  border-radius:15px;
-  border:none;
-  font-size:16px;
-  margin:10px;
+  padding:10px;border-radius:15px;border:none;
+  font-size:16px;margin:15px;
 }
 
-/* ===== CONTENIDO ===== */
 .semana{display:none}
 .dia{
   background:rgba(255,255,255,.25);
-  padding:20px;
-  border-radius:20px;
-  margin-top:20px;
+  padding:20px;border-radius:20px;margin-top:20px;
 }
 .ejercicio{
   background:rgba(255,255,255,.3);
-  padding:12px;
-  border-radius:15px;
-  margin:10px 0;
+  padding:12px;border-radius:15px;margin:10px 0;
 }
 input{
-  width:60px;
-  border:none;
-  border-radius:10px;
-  padding:5px;
-  text-align:center;
+  width:55px;border:none;border-radius:10px;
+  padding:5px;text-align:center;margin:2px;
 }
 
-/* ===== BOTÓN ===== */
 button{
-  background:red;
-  border:none;
-  padding:12px 25px;
-  border-radius:25px;
-  color:white;
-  font-size:16px;
-  margin:20px;
-  cursor:pointer;
-  box-shadow:0 0 10px pink;
+  background:red;border:none;padding:12px 25px;
+  border-radius:25px;color:white;
+  font-size:16px;margin:20px;
+  cursor:pointer;box-shadow:0 0 10px pink;
 }
 
-/* ===== CORAZONES ===== */
 .corazon{
-  position:fixed;
-  top:-10px;
-  font-size:25px;
+  position:fixed;top:-10px;font-size:25px;
   animation:caer 5s linear infinite;
 }
 @keyframes caer{
@@ -107,7 +71,6 @@ button{
 
 <body>
 
-<!-- MENÚ -->
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 <div class="menu" id="menu">
   <a href="index.html">💖 Inicio</a>
@@ -116,7 +79,7 @@ button{
 </div>
 
 <h1>Rutina hecha con amor 💕</h1>
-<p>Cada repetición es una carta de amor 💌</p>
+<p>Cada repetición es amor puro 💌</p>
 
 <select onchange="mostrarSemana(this.value)">
   <option value="">Seleccionar semana</option>
@@ -126,57 +89,51 @@ button{
   <option value="s4">Semana 4</option>
 </select>
 
-<!-- ===== SEMANA 1 ===== -->
-<div class="semana" id="s1">
-<p>3 series · 12 repes</p>
+<!-- FUNCIÓN PARA GENERAR EJERCICIOS -->
+<script>
+function ejerciciosHTML(prefijo, series){
+  const i = n => `<input id="${prefijo}-${n}">`.repeat(series);
+  return `
+  <div class="dia"><h2>Día 1 – Glúteo 🍑</h2>
+    <div class="ejercicio">Abductor ${i("ab")}</div>
+    <div class="ejercicio">Hip Thrust ${i("ht")}</div>
+    <div class="ejercicio">Búlgara ${i("bu")}</div>
+    <div class="ejercicio">Step up polea ${i("su")}</div>
+    <div class="ejercicio">Patada máquina ${i("pa")}</div>
+  </div>
 
-<div class="dia">
-<h2>Día 1 – Glúteo 🍑</h2>
-<div class="ejercicio">Abductor <input id="s1-ab1"><input id="s1-ab2"><input id="s1-ab3"></div>
-<div class="ejercicio">Hip Thrust <input id="s1-ht1"><input id="s1-ht2"><input id="s1-ht3"></div>
-<div class="ejercicio">Búlgara <input id="s1-bu1"><input id="s1-bu2"><input id="s1-bu3"></div>
-<div class="ejercicio">Step up polea <input id="s1-su1"><input id="s1-su2"><input id="s1-su3"></div>
-<div class="ejercicio">Patada máquina <input id="s1-pa1"><input id="s1-pa2"><input id="s1-pa3"></div>
-</div>
+  <div class="dia"><h2>Día 2 – Upper Body 💪</h2>
+    <div class="ejercicio">Press inclinado ${i("pr")}</div>
+    <div class="ejercicio">Hombro lateral polea ${i("la")}</div>
+    <div class="ejercicio">Hombro frontal mancuerna ${i("fr")}</div>
+    <div class="ejercicio">Hombro trasero peck deck ${i("tr")}</div>
+    <div class="ejercicio">Curl bícep ${i("bi")}</div>
+    <div class="ejercicio">Extensión trícep ${i("ex")}</div>
+    <div class="ejercicio">Trícep copa ${i("co")}</div>
+  </div>
 
-<div class="dia">
-<h2>Día 2 – Upper Body 💪</h2>
-<div class="ejercicio">Press inclinado barra <input id="s1-pr1"><input id="s1-pr2"><input id="s1-pr3"></div>
-<div class="ejercicio">Hombro lateral polea <input id="s1-la1"><input id="s1-la2"><input id="s1-la3"></div>
-<div class="ejercicio">Hombro frontal mancuerna <input id="s1-fr1"><input id="s1-fr2"><input id="s1-fr3"></div>
-<div class="ejercicio">Hombro trasero peck deck <input id="s1-tr1"><input id="s1-tr2"><input id="s1-tr3"></div>
-<div class="ejercicio">Curl bícep mancuerna <input id="s1-bi1"><input id="s1-bi2"><input id="s1-bi3"></div>
-<div class="ejercicio">Extensión trícep mecate <input id="s1-ex1"><input id="s1-ex2"><input id="s1-ex3"></div>
-<div class="ejercicio">Trícep copa polea <input id="s1-co1"><input id="s1-co2"><input id="s1-co3"></div>
-</div>
+  <div class="dia"><h2>Día 3 – Cuádriceps 🦵</h2>
+    <div class="ejercicio">Aductor ${i("ad")}</div>
+    <div class="ejercicio">Sentadilla Smith ${i("sm")}</div>
+    <div class="ejercicio">Pantorrilla ${i("pt")}</div>
+    <div class="ejercicio">Extensión + desplantes ${i("ed")}</div>
+    <div class="ejercicio">Buenos días ${i("bd")}</div>
+  </div>
+  `;
+}
+</script>
 
-<div class="dia">
-<h2>Día 3 – Cuádriceps 🦵</h2>
-<div class="ejercicio">Aductor <input id="s1-ad1"><input id="s1-ad2"><input id="s1-ad3"></div>
-<div class="ejercicio">Sentadilla Smith <input id="s1-sm1"><input id="s1-sm2"><input id="s1-sm3"></div>
-<div class="ejercicio">Pantorrilla <input id="s1-pa11"><input id="s1-pa22"><input id="s1-pa33"></div>
-<div class="ejercicio">Extensión + desplantes <input id="s1-ex11"><input id="s1-ex22"><input id="s1-ex33"></div>
-<div class="ejercicio">Buenos días <input id="s1-bd1"><input id="s1-bd2"><input id="s1-bd3"></div>
-</div>
-
-<button onclick="guardar()">💾 Guardar pesos</button>
-</div>
-
-<!-- SEMANA 2 = igual a semana 1 -->
-<div class="semana" id="s2"><p>Semana 2 = misma estructura que semana 1</p></div>
-
-<!-- ===== SEMANA 3 ===== -->
-<div class="semana" id="s3">
-<p>4 series · 12 repes · mismo peso</p>
-<p>(usa 4 cuadritos por ejercicio)</p>
-</div>
-
-<!-- ===== SEMANA 4 ===== -->
-<div class="semana" id="s4">
-<p>3 series · 12 repes · aumentamos peso</p>
-</div>
+<div class="semana" id="s1"><p>3 series · 12 repes</p><div id="w1"></div><button onclick="guardar()">💾 Guardar pesos</button></div>
+<div class="semana" id="s2"><p>3 series · 12 repes</p><div id="w2"></div><button onclick="guardar()">💾 Guardar pesos</button></div>
+<div class="semana" id="s3"><p>4 series · 12 repes (mismo peso)</p><div id="w3"></div><button onclick="guardar()">💾 Guardar pesos</button></div>
+<div class="semana" id="s4"><p>3 series · 12 repes (subimos peso)</p><div id="w4"></div><button onclick="guardar()">💾 Guardar pesos</button></div>
 
 <script>
+document.getElementById("w1").innerHTML = ejerciciosHTML("s1",3);
+document.getElementById("w2").innerHTML = ejerciciosHTML("s2",3);
+document.getElementById("w3").innerHTML = ejerciciosHTML("s3",4);
+document.getElementById("w4").innerHTML = ejerciciosHTML("s4",3);
+
 function toggleMenu(){
   const m=document.getElementById("menu");
   m.style.left=m.style.left==="0px"?"-260px":"0px";
@@ -194,15 +151,16 @@ function guardar(){
   alert("Pesos guardados 💖");
 }
 
-document.querySelectorAll("input").forEach(i=>{
-  i.value=localStorage.getItem(i.id)||"";
+document.addEventListener("input",()=>{
+  document.querySelectorAll("input").forEach(i=>{
+    i.value = localStorage.getItem(i.id) || i.value;
+  });
 });
 
-/* Corazones */
+/* corazones */
 setInterval(()=>{
   const c=document.createElement("div");
-  c.className="corazon";
-  c.innerHTML="💖";
+  c.className="corazon";c.innerHTML="💖";
   c.style.left=Math.random()*100+"vw";
   document.body.appendChild(c);
   setTimeout(()=>c.remove(),5000);
@@ -211,5 +169,7 @@ setInterval(()=>{
 
 </body>
 </html>
+
+
 
 
