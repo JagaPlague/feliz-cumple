@@ -7,29 +7,11 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  height: 100vh;
+  font-family: Arial, sans-serif;
   background: linear-gradient(180deg, #ff9acb, #ffc1dc);
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   overflow-x: hidden;
-}
-
-/* CONTENIDO PRINCIPAL ORIGINAL */
-.container {
-  padding: 40px;
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 20px;
 }
 
 /* BOTÓN MENÚ */
@@ -40,15 +22,14 @@ p {
   font-size: 30px;
   cursor: pointer;
   z-index: 1001;
-  color: white;
 }
 
-/* MENÚ LATERAL */
+/* MENÚ */
 #side-menu {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: -260px;
+  width: 260px;
   height: 100%;
   background: rgba(255, 105, 180, 0.95);
   padding: 40px 20px;
@@ -57,7 +38,6 @@ p {
 }
 
 #side-menu h2 {
-  color: white;
   margin-bottom: 30px;
 }
 
@@ -67,6 +47,84 @@ p {
   text-decoration: none;
   font-size: 20px;
   margin: 15px 0;
+}
+
+/* CONTENIDO */
+.container {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+/* FOTOS */
+.photos {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.photos img {
+  width: 180px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* REGALOS */
+.gifts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 40px 0;
+}
+
+.gift-btn {
+  background: white;
+  color: #ff4f9a;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.gift-btn:hover {
+  transform: scale(1.05);
+}
+
+/* MENSAJE FINAL */
+.final-message {
+  margin-top: 50px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* MENSAJES FLOTANTES */
+.message {
+  position: fixed;
+  font-size: 20px;
+  opacity: 0.35;
+  pointer-events: none;
+  animation: float 4s ease-in-out forwards;
+}
+
+@keyframes float {
+  0% {opacity:0; transform:translateY(20px);}
+  20% {opacity:0.35;}
+  80% {opacity:0.35;}
+  100% {opacity:0; transform:translateY(-30px);}
 }
 </style>
 </head>
@@ -79,25 +137,75 @@ p {
 <!-- MENÚ -->
 <div id="side-menu">
   <h2>💗 Menú</h2>
+  <a href="index.html">🏠 Inicio</a>
   <a href="rutina.html">🏋️ Rutina</a>
   <a href="calendario.html">📅 Calendario</a>
 </div>
 
-<!-- CONTENIDO ORIGINAL -->
 <div class="container">
   <h1>Feliz Cumple 💖</h1>
-  <p>Esto lo hice con todo mi amor para vos</p>
+  <div class="subtitle">
+    Este es solo uno de tus regalos  
+    <br>porque vos merecés muchos más ✨
+  </div>
+
+  <!-- FOTOS -->
+  <div class="photos">
+    <img src="imagenes/foto1.jpg">
+    <img src="imagenes/foto2.jpg">
+    <img src="imagenes/foto3.jpg">
+  </div>
+
+  <!-- REGALOS -->
+  <div class="gifts">
+    <a href="#" class="gift-btn">🎁 Regalo 1</a>
+    <a href="#" class="gift-btn">🎁 Regalo 2 (sorpresa)</a>
+    <a href="#" class="gift-btn">🎁 Regalo 3 👀</a>
+  </div>
+
+  <!-- MENSAJE FINAL -->
+  <div class="final-message">
+    Gracias por existir,  
+    <br>por acompañarme,  
+    <br>por ser mi lugar seguro 💕  
+    <br><br>
+    Esto no es solo una página,  
+    <br>es un pedacito de lo que siento por vos.
+  </div>
 </div>
 
 <script>
 function toggleMenu() {
   const menu = document.getElementById("side-menu");
-  menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
+  menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
 }
+
+/* MENSAJES FLOTANTES */
+const messages = [
+  "Te amo 💖",
+  "Siempre vos 💘",
+  "Mi persona favorita ✨",
+  "Gracias por tanto 💕",
+  "Vos y yo 🫶",
+  "Para toda la vida 💍",
+  "Nuestro amor 💗"
+];
+
+setInterval(() => {
+  const msg = document.createElement("div");
+  msg.className = "message";
+  msg.textContent = messages[Math.floor(Math.random()*messages.length)];
+  msg.style.left = Math.random()*85 + "%";
+  msg.style.top = Math.random()*85 + "%";
+  document.body.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 4000);
+}, 2000);
 </script>
 
 </body>
 </html>
+
 
 
 
