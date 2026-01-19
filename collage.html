@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuestros recuerdos 💖</title>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  font-family:'Comic Sans MS', cursive;
+  background:linear-gradient(180deg,#ffb6c1,#ff69b4);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* MENÚ */
+.menu-btn{
+  position:fixed;top:15px;left:15px;
+  font-size:30px;cursor:pointer;z-index:1001;
+}
+.menu{
+  position:fixed;top:0;left:-260px;
+  width:250px;height:100%;
+  background:rgba(255,105,180,0.95);
+  padding-top:60px;transition:.3s;z-index:1000;
+}
+.menu a{
+  display:block;color:white;text-decoration:none;
+  font-size:20px;padding:15px;
+}
+.menu a:hover{background:rgba(255,255,255,.2)}
+
+h1{
+  font-size:2.5em;
+  margin-top:40px;
+}
+
+p{
+  font-size:1.2em;
+  margin-bottom:30px;
+}
+
+/* COLLAGE */
+.collage{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:15px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.foto{
+  background:white;
+  padding:8px;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(255,255,255,0.6);
+  transform:rotate(var(--rot));
+  animation: flotar 6s ease-in-out infinite;
+}
+
+.foto img{
+  width:100%;
+  border-radius:10px;
+}
+
+@keyframes flotar{
+  0%,100%{transform:translateY(0) rotate(var(--rot))}
+  50%{transform:translateY(-10px) rotate(var(--rot))}
+}
+
+/* MENSAJES */
+.mensaje{
+  position:fixed;
+  bottom:20%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,.25);
+  padding:15px 25px;
+  border-radius:25px;
+  font-size:18px;
+  opacity:0;
+  transition:.5s;
+}
+
+/* CORAZONES */
+.corazon{
+  position:fixed;top:-10px;
+  font-size:25px;
+  animation:caer 5s linear infinite;
+}
+@keyframes caer{
+  to{transform:translateY(110vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu" id="menu">
+  <a href="index.html">💖 Inicio</a>
+  <a href="rutina.html">🏋️ Rutina</a>
+  <a href="calendario.html">📅 Calendario</a>
+  <a href="collage.html">📸 Collage</a>
+</div>
+
+<h1>📸 Nuestros recuerdos 💕</h1>
+<p>Momentos contigo que quiero guardar para siempre 🥹</p>
+
+<div class="collage">
+  <div class="foto" style="--rot:-3deg"><img src="https://i.ibb.co/jmq3RP2/Whats-App-Image-2026-01-18-at-9-55-24-PM.jpg"></div>
+  <div class="foto" style="--rot:2deg"><img src="https://i.ibb.co/bMVd8Dkn/Whats-App-Image-2026-01-18-at-9-55-25-PM-1.jpg"></div>
+  <div class="foto" style="--rot:-2deg"><img src="https://i.ibb.co/5WqhRkrn/Whats-App-Image-2026-01-18-at-9-55-25-PM-2.jpg"></div>
+  <div class="foto" style="--rot:3deg"><img src="https://i.ibb.co/fzF1w0Ds/Whats-App-Image-2026-01-18-at-9-55-25-PM-3.jpg"></div>
+  <div class="foto" style="--rot:-1deg"><img src="https://i.ibb.co/qTwQ5ZR/Whats-App-Image-2026-01-18-at-9-55-25-PM.jpg"></div>
+  <div class="foto" style="--rot:2deg"><img src="https://i.ibb.co/HLkMX2w6/Whats-App-Image-2026-01-18-at-9-55-26-PM-1.jpg"></div>
+  <div class="foto" style="--rot:-2deg"><img src="https://i.ibb.co/35RC0cYH/Whats-App-Image-2026-01-18-at-9-55-26-PM-2.jpg"></div>
+  <div class="foto" style="--rot:3deg"><img src="https://i.ibb.co/rKw6SHrH/Whats-App-Image-2026-01-18-at-9-55-26-PM.jpg"></div>
+</div>
+
+<div class="mensaje" id="mensaje"></div>
+
+<script>
+/* MENU */
+function toggleMenu(){
+  const m=document.getElementById("menu");
+  m.style.left=m.style.left==="0px"?"-260px":"0px";
+}
+
+/* MENSAJES */
+const mensajes=[
+  "Contigo todo es más bonito 💖",
+  "Mi lugar favorito siempre es a tu lado 🥹",
+  "Gracias por existir ✨",
+  "Estos recuerdos son mi tesoro 💌",
+  "Te elegiría mil veces más 💕"
+];
+let i=0;
+setInterval(()=>{
+  const m=document.getElementById("mensaje");
+  m.textContent=mensajes[i%mensajes.length];
+  m.style.opacity=1;
+  setTimeout(()=>m.style.opacity=0,2000);
+  i++;
+},3000);
+
+/* CORAZONES */
+setInterval(()=>{
+  const c=document.createElement("div");
+  c.className="corazon";
+  c.innerHTML="💖";
+  c.style.left=Math.random()*100+"vw";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),5000);
+},300);
+</script>
+
+</body>
+</html>
