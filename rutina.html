@@ -1,201 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Tu Rutina 💖</title>
+  <meta charset="UTF-8">
+  <title>Rutina para vos 💙</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #ff9acb, #ffc1dc);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      overflow-x: hidden;
+      text-align: center;
+    }
 
-/* MENÚ */
-#menu-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 1001;
-}
+    /* ===== MENU ===== */
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 26px;
+      cursor: pointer;
+      z-index: 1001;
+    }
 
-#side-menu {
-  position: fixed;
-  top: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  background: rgba(255,105,180,0.95);
-  padding: 40px 20px;
-  transition: 0.3s;
-  z-index: 1000;
-}
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
 
-#side-menu a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-  margin: 15px 0;
-}
+    .side-menu a {
+      display: block;
+      padding: 15px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
 
-/* CONTENIDO */
-.container {
-  padding: 80px 15px;
-  max-width: 900px;
-  margin: auto;
-}
+    .side-menu a:hover {
+      background: rgba(255,255,255,0.1);
+    }
 
-.week-select {
-  margin: 20px 0;
-}
+    /* ===== CONTENIDO ===== */
+    .container {
+      padding: 80px 15px 40px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-select {
-  padding: 10px;
-  border-radius: 15px;
-  border: none;
-  font-size: 16px;
-}
+    h1 {
+      margin-bottom: 10px;
+    }
 
-.exercise {
-  background: rgba(255,255,255,0.25);
-  border-radius: 20px;
-  padding: 15px;
-  margin: 15px 0;
-}
+    .week-selector {
+      margin: 20px 0;
+    }
 
-.inputs {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
+    select {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+    }
 
-input {
-  width: 60px;
-  border-radius: 10px;
-  border: none;
-  padding: 6px;
-  text-align: center;
-}
+    .note {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
 
-button {
-  margin-top: 25px;
-  padding: 12px 30px;
-  border-radius: 25px;
-  border: none;
-  font-size: 18px;
-  background: white;
-  color: #ff4f9a;
-  cursor: pointer;
-}
-</style>
+    .day {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .day h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .exercise {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .exercise label {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .sets {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sets input {
+      width: 70px;
+      padding: 8px;
+      border-radius: 10px;
+      border: none;
+      text-align: center;
+    }
+
+    .save-btn {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .save-btn:hover {
+      background: rgba(255,255,255,0.35);
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="menu-btn" onclick="toggleMenu()">☰</div>
-
-<div id="side-menu">
-  <a href="index.html">🏠 Inicio</a>
-  <a href="rutina.html">🏋️ Rutina</a>
-  <a href="calendario.html">📅 Calendario</a>
-</div>
-
-<div class="container">
-  <h1>Tu Rutina 💪💖</h1>
-
-  <p>
-    Semanas 1–2: 3×12<br>
-    Semana 3: 4×12 (mismo peso)<br>
-    Semana 4: 3×12 (subimos peso)
-  </p>
-
-  <div class="week-select">
-    <select id="weekSelect" onchange="renderExercises()">
-      <option value="1">Semana 1</option>
-      <option value="2">Semana 2</option>
-      <option value="3">Semana 3</option>
-      <option value="4">Semana 4</option>
-    </select>
+  <!-- MENU -->
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="side-menu" id="sideMenu">
+    <a href="index.html">🏠 Inicio</a>
+    <a href="rutina.html">🏋️ Rutina</a>
+    <a href="calendario.html">📅 Calendario</a>
   </div>
 
-  <div id="routine"></div>
+  <div class="container">
+    <h1>Tu rutina 💙</h1>
 
-  <button onclick="saveAll()">💾 Guardar pesos</button>
-</div>
+    <div class="week-selector">
+      <select id="weekSelect" onchange="renderRoutine()">
+        <option value="1">Semana 1–2 (3×12)</option>
+        <option value="3">Semana 3 (4×12)</option>
+        <option value="4">Semana 4 (3×12 ↑ peso)</option>
+      </select>
+    </div>
 
-<script>
-function toggleMenu() {
-  const menu = document.getElementById("side-menu");
-  menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
-}
+    <div class="note" id="weekNote"></div>
 
-const exercises = [
-  "Abductor",
-  "Hip Thrust",
-  "Búlgara",
-  "Step up polea",
-  "Patada máquina",
-  "Press inclinado barra",
-  "Hombro lateral polea",
-  "Hombro frontal mancuerna",
-  "Hombro trasero peck deck",
-  "Curl bíceps mancuerna",
-  "Extensión tríceps mecate",
-  "Tríceps copa mecate",
-  "Aductor",
-  "Sentadilla Smith",
-  "Pantorrilla",
-  "Extensión rodilla + desplantes",
-  "Buenos días"
-];
+    <div id="routine"></div>
 
-function renderExercises() {
-  const week = document.getElementById("weekSelect").value;
-  const sets = week == 3 ? 4 : 3;
-  const container = document.getElementById("routine");
-  container.innerHTML = "";
+    <button class="save-btn" onclick="saveData()">Guardar pesos 💾</button>
+  </div>
 
-  exercises.forEach(ex => {
-    const div = document.createElement("div");
-    div.className = "exercise";
-    div.innerHTML = `<strong>${ex}</strong>`;
-
-    const inputs = document.createElement("div");
-    inputs.className = "inputs";
-
-    for (let i = 1; i <= sets; i++) {
-      const input = document.createElement("input");
-      input.placeholder = `S${i}`;
-      input.value = localStorage.getItem(`${ex}-w${week}-s${i}`) || "";
-      input.dataset.key = `${ex}-w${week}-s${i}`;
-      inputs.appendChild(input);
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
     }
 
-    div.appendChild(inputs);
-    container.appendChild(div);
-  });
-}
+    const routineData = [
+      {
+        day: "Día 1 – Glúteo",
+        exercises: [
+          "Abductor",
+          "Hip thrust",
+          "Búlgara",
+          "Step up polea",
+          "Patada máquina"
+        ]
+      },
+      {
+        day: "Día 2 – Upper Body",
+        exercises: [
+          "Press inclinado pecho barra",
+          "Hombro lateral polea",
+          "Hombro frontal mancuerna",
+          "Hombro trasero peck deck",
+          "Curl bíceps mancuerna",
+          "Extensión tríceps mecate polea",
+          "Tríceps codo copa polea mecate"
+        ]
+      },
+      {
+        day: "Día 3 – Lower Body (Cuádriceps)",
+        exercises: [
+          "Aductor",
+          "Sentadilla Smith",
+          "Pantorrilla a escoger",
+          "Extensión rodilla máquina + desplantes",
+          "Sentadilla buenos días"
+        ]
+      }
+    ];
 
-function saveAll() {
-  document.querySelectorAll("input").forEach(input => {
-    localStorage.setItem(input.dataset.key, input.value);
-  });
-  alert("Pesos guardados 💖");
-}
+    function renderRoutine() {
+      const week = document.getElementById("weekSelect").value;
+      const routine = document.getElementById("routine");
+      routine.innerHTML = "";
 
-renderExercises();
-</script>
+      let sets = week == 3 ? 4 : 3;
+
+      document.getElementById("weekNote").innerText =
+        week == 1
+          ? "Semanas 1 y 2 · 3 series · 12 repeticiones"
+          : week == 3
+          ? "Semana 3 · 4 series · 12 repeticiones (mismo peso)"
+          : "Semana 4 · 3 series · 12 repeticiones (subimos peso)";
+
+      routineData.forEach((d, dIndex) => {
+        const dayDiv = document.createElement("div");
+        dayDiv.className = "day";
+        dayDiv.innerHTML = `<h2>${d.day}</h2>`;
+
+        d.exercises.forEach((ex, eIndex) => {
+          const exDiv = document.createElement("div");
+          exDiv.className = "exercise";
+          exDiv.innerHTML = `<label>${ex}</label>`;
+
+          const setsDiv = document.createElement("div");
+          setsDiv.className = "sets";
+
+          for (let i = 0; i < sets; i++) {
+            const input = document.createElement("input");
+            input.placeholder = `Serie ${i + 1}`;
+            input.value =
+              localStorage.getItem(`w${week}-d${dIndex}-e${eIndex}-s${i}`) || "";
+            input.oninput = () =>
+              localStorage.setItem(
+                `w${week}-d${dIndex}-e${eIndex}-s${i}`,
+                input.value
+              );
+            setsDiv.appendChild(input);
+          }
+
+          exDiv.appendChild(setsDiv);
+          dayDiv.appendChild(exDiv);
+        });
+
+        routine.appendChild(dayDiv);
+      });
+    }
+
+    function saveData() {
+      alert("Pesos guardados 💙");
+    }
+
+    renderRoutine();
+  </script>
 
 </body>
 </html>
-
 
 
 
